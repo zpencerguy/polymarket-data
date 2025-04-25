@@ -5,7 +5,7 @@ from datetime import datetime
 from requests_helper import get_paginated_data, make_get_request
 
 from services.bigquery_service import get_bigquery_client
-from queries.polymarket_queries import merge_markets, merge_events, update_event_status, update_markets_status
+from queries.polymarket_queries import merge_markets, merge_events
 import settings
 
 BASE_URL = 'https://gamma-api.polymarket.com'
@@ -33,9 +33,7 @@ def run_etl():
         client = get_bigquery_client()
         etl_queries = {
             'events': merge_events,
-            'markets': merge_markets,
-            'events_status': update_event_status,
-            'markets_status': update_markets_status,
+            'markets': merge_markets
         }
         for name, query in etl_queries.items():
             print(f'Updating {name} table')

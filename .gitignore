@@ -1,2 +1,8 @@
 *.json
 .env
+
+# Ignore PyCharm project settings
+.idea/
+
+# Ignore Python cache
+__pycache__/
